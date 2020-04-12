@@ -1,4 +1,4 @@
-const covid19ImpactEstimator = data => {
+const covid19ImpactEstimator = (data) => {
 let impact;
 let severeImpact;
 // INPUT DATA
@@ -46,6 +46,6 @@ myOutput.severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTim
 
 }
 
-//export default covid19ImpactEstimator;
+export default covid19ImpactEstimator;
 
 
