@@ -2,32 +2,32 @@ const covid19ImpactEstimator = (data) => {
   // INPUT DATA
   
   // OUTPUT DATA
-  let impact = {
-      currentlyInfected: '',
-      infectionsByRequestedTime: ''
-   };
-
-   let severeImpact = {
-    currentlyInfected: '',
-    infectionsByRequestedTime: ''
-  };
+  const impact = {};
+  const severeImpact = {};
 
   // CHALLENGE ONE
-  let currentlyInfected = reportedCases * 10;
-  myOutput.impact.currentlyInfected = currentlyInfected;
+  // ESTIMATING THE NUMBER OF CURRENTLY INFECTED PEOPLE
+  let currentlyInfectedImpact;
+  let currentlyInfectedSevereImpact;
+  data.reportedCases = reportedCases;
+  currentlyInfectedImpact = reportedCases * 10;
+  impact.currentlyInfected = currentlyInfectedImpact;
+  
+  data.reportedCases = reportedCases;
+  currentlyInfectedSevereImpact = reportedCases * 50;
+  severeImpact.currentlyInfected = currentlyInfectedSevereImpact;
 
-
-  let severeCurrentlyInfected = data.reportedCases * 50;
-  myOutput.severeImpact.currentlyInfected = severeCurrentlyInfected;
-
-  let infectionsByRequestedTime = myOutput.impact.currentlyInfected * 512;
-  myOutput.impact.infectionsByRequestedTime = infectionsByRequestedTime;
-
-  let severeInfectionsByRequestedTime = myOutput.severeImpact.currentlyInfected * 512;
-  myOutput.severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
-
+  // INFECTION BY REQUESTED TIME FOR IMPACT
+  let infectionsByRequestTimeImpact;
+  let infectionsByRequestTimeSevereImpact;
+  infectionsByRequestTimeImpact = impact.currentlyInfected * 512;
+  impact.infectionsByRequestedTime = infectionsByRequestTimeImpact;
+ 
+  // INFECTION BY REQUESTED TIME FOR SEVERE IMPACT
+  infectionsByRequestTimeSevereImpact = severeImpact.currentlyInfected * 512;
+  severeImpact.infectionsByRequestedTime = infectionsByRequestTimeSevereImpact;
   }
 
-export default covid19ImpactEstimator;
+  export default covid19ImpactEstimator;
 
 
