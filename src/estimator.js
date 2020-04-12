@@ -7,12 +7,11 @@ const covid19ImpactEstimator = (data) => {
   // CHALLENGE ONE -// ESTIMATING THE NUMBER OF CURRENTLY INFECTED PEOPLE
   let currentlyInfectedImpact;
   let currentlyInfectedSevereImpact;
-  const reportedCases;
-  reportedCases = data.reportedCases;
+  const reportedCases = data.reportedCases;
   
   impact.currentlyInfected = reportedCases * 10;
   severeImpact.currentlyInfected = reportedCases * 50;
   
   }
-  
+
   export default covid19ImpactEstimator;
