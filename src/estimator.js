@@ -1,14 +1,17 @@
 const covid19ImpactEstimator = (data) => {
-  data; 
-  const impact = {};
-  const severeImpact = {};
+  inputData = data;
+  inputData ={}
+  const impact ={};
+  const severeImpact ={};
 
-  // CHALLENGE ONE -// ESTIMATING THE NUMBER OF CURRENTLY INFECTED PEOPLE
-  const reportedCases = data.reportedCases;
-  
-  impact.currentlyInfected = reportedCases * 10;
-  severeImpact.currentlyInfected = reportedCases * 50;
-  
+  inputData.reportedCases = '';
+  impact.currentlyInfected = inputData.reportedCases * 10;
+  severeImpact.currentlyInfected = input.reportedCases * 50;
+
+  impact.infectionsByRequestedTime = impact.currentlyInfected * 512;
+  severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 512;
+
+  return{impact, severeImpact};
   }
 
   export default covid19ImpactEstimator;
