@@ -1,16 +1,20 @@
+data,
+impact = {
+  currentlyInfected: data.reportedCases * 10,
+  infectionsByRequestedTime: currentlyInfected * 512
+}
+
+severeImpact = {
+  currentlyInfected: data.reportedCases * 50,
+  infectionsByRequestedTime: currentlyInfected * 512
+}
+
+let days, weeks, months;
+days = 7;
+weeks = 7;
+months = 30;
 const covid19ImpactEstimator = (data) =>{
-  data: {};
-  const impact = {};
-  const severeImpact = {};
-
-  inputData.reportedCases = '';
-  impact.currentlyInfected = data.reportedCases * 10;
-  severeImpact.currentlyInfected = data.reportedCases * 50;
-
-  impact.infectionsByRequestedTime = impact.currentlyInfected * 512;
-  severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * 512;
-
-  return { impact, severeImpact };
+  
 };
 
 export default covid19ImpactEstimator;
