@@ -24,6 +24,7 @@ const covid19ImpactEstimator = (data) => {
         //severeImpact.infectionsByRequestedTime = days;
     
     };
+    }
 
   return {
     impact: {
