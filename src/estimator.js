@@ -32,7 +32,7 @@ const covid19ImpactEstimator = (data) => {
         months = severeImpact.currentlyInfected * months;
         severeImpact.infectionsByRequestedTime = months;      
     } else input.periodType === 0;
-
+  }
   return {
     impact: {
       currentlyInfected,
