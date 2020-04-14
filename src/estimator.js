@@ -7,12 +7,12 @@ const covid19ImpactEstimator = (data) => {
   impact.currentlyInfected = currentlyInfected;
   const severeCurrentlyInfected = input.reportedCases * 50;
   severeImpact.currentlyInfected = severeCurrentlyInfected;
-  //
+
   function normaliseDays() {
     let days = 1024;
     let weeks = 146;
     let months = 34;
-  //
+
     if (input.periodType === days) {
       days *= impact.currentlyInfected;
       impact.infectionsByRequestedTime = days;
