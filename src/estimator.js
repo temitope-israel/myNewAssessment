@@ -36,12 +36,12 @@ const covid19ImpactEstimator = (data) => {
   return {
     impact: {
       currentlyInfected,
-      infectionsByRequestedTime = normaliseDays()
+      infectionsByRequestedTime: normaliseDays()
     },
 
     severeImpact: {
       currentlyInfected,
-      infectionsByRequestedTime = normaliseDays()
+      infectionsByRequestedTime: normaliseDays()
     }
   };
 }
