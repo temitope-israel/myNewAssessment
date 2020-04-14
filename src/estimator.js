@@ -7,29 +7,29 @@ const covid19ImpactEstimator = (data) => {
   impact.currentlyInfected = currentlyInfected;
   const severeCurrentlyInfected = input.reportedCases * 50;
   severeImpact.currentlyInfected = severeCurrentlyInfected;
-  
-  function normaliseDays(){
+  //
+  function normaliseDays() {
     let days = 1024;
     let weeks = 146;
     let months = 34;
-  
-    if(input.periodType === days){
-        days = impact.currentlyInfected * days;
-        impact.infectionsByRequestedTime = days;
+  //
+    if  (input.periodType === days) {
+      days *= impact.currentlyInfected;
+      impact.infectionsByRequestedTime = days;
 
-        days = severeImpact.currentlyInfected * days;
-        severeImpact.infectionsByRequestedTime = days;    
-    } else if(input.periodType === weeks){
-        weeks = impact.currentlyInfected * weeks;
+      days *= severeImpact.currentlyInfected;
+      severeImpact.infectionsByRequestedTime = days;    
+    } else if (input.periodType === weeks) {
+        weeks *= impact.currentlyInfected;
         impact.infectionsByRequestedTime = weeks;
 
-        days = severeImpact.currentlyInfected * weeks;
+        days *= severeImpact.currentlyInfected;
         severeImpact.infectionsByRequestedTime = weeks;
-    } else if(input.periodType === months){
-        months = impact.currentlyInfected * months;
+    } else if (input.periodType === months) {
+        months *= impact.currentlyInfected;
         impact.infectionsByRequestedTime = months;
 
-        months = severeImpact.currentlyInfected * months;
+        months *= severeImpact.currentlyInfected;
         severeImpact.infectionsByRequestedTime = months;      
     } else input.periodType === 0;
   }
