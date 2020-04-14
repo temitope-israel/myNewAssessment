@@ -13,6 +13,18 @@ const covid19ImpactEstimator = (data) => {
 
   const severeInfectionsByRequestedTime = severeImpact.currentlyInfected * 512;
   severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
+
+  function normaliseDays(){
+    let days = 1024 ;
+    
+    
+    if(input.periodType === days){
+        days = currentlyInfected * days;
+        impact.infectionsByRequestedTime = days;
+        //severeImpact.infectionsByRequestedTime = days;
+    
+    };
+
   return {
     impact: {
       currentlyInfected,
