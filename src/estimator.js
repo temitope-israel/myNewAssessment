@@ -7,32 +7,37 @@ const covid19ImpactEstimator = (data) => {
   impact.currentlyInfected = currentlyInfected;
   const severeCurrentlyInfected = input.reportedCases * 50;
   severeImpact.currentlyInfected = severeCurrentlyInfected;
+  
+  let estimatedDays;
+  estimatedDays = input.periodType;
+  estimatedDays = impact.currentlyInfected * 1024;
+  impact.currentlyInfected = estimatedDays;
 
-  function normaliseDays() {
-    let days = 1024;
-    let weeks = 146;
-    let months = 34;
+  let estimatedWeeks;
+  estimatedWeeks = input.periodType;
+  estimatedWeeks = impact.currentlyInfected * 146;
+  impact.currentlyInfected = estimatedWeeks;
 
-    if (input.periodType === days) {
-      days *= impact.currentlyInfected;
-      impact.infectionsByRequestedTime = days;
+  let estimatedMonths;
+  estimatedMonths = input.periodType;
+  estimatedMonths = impact.currentlyInfected * 34;
+  impact.currentlyInfected = estimatedMonths;
+  
+  let estimatedDays;
+  estimatedDays = input.periodType;
+  estimatedDays = severeImpact.currentlyInfected * 1024;
+  severeImpact.currentlyInfected = estimatedDays;
 
-      days *= severeImpact.currentlyInfected;
-      severeImpact.infectionsByRequestedTime = days;
-    } else if (input.periodType === weeks) {
-      weeks *= impact.currentlyInfected;
-      impact.infectionsByRequestedTime = weeks;
+  let estimatedWeeks;
+  estimatedWeeks = input.periodType;
+  estimatedWeeks = severeImpact.currentlyInfected * 146;
+  severeImpact.currentlyInfected = estimatedWeeks;
 
-      days *= severeImpact.currentlyInfected;
-      severeImpact.infectionsByRequestedTime = weeks;
-    } else if (input.periodType === months) {
-      months *= impact.currentlyInfected;
-      impact.infectionsByRequestedTime = months;
-
-      months *= severeImpact.currentlyInfected;
-      severeImpact.infectionsByRequestedTime = months;
-    } else input.periodType = 0;
-  }
+  let estimatedMonths;
+  estimatedMonths = input.periodType;
+  estimatedMonths = severeImpact.currentlyInfected * 34;
+  severeImpact.currentlyInfected = estimatedMonths;
+  
   return {
     impact: {
       currentlyInfected,
