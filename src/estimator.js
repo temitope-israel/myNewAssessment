@@ -37,16 +37,16 @@ const covid19ImpactEstimator = (data) => {
   estimatedMonths = input.periodType;
   estimatedMonths = severeImpact.currentlyInfected * 34;
   severeImpact.currentlyInfected = estimatedMonths;
-  
+
   return {
     impact: {
       currentlyInfected,
-      infectionsByRequestedTime: normaliseDays()
+      infectionsByRequestedTime
     },
 
     severeImpact: {
       currentlyInfected,
-      infectionsByRequestedTime: normaliseDays()
+      infectionsByRequestedTime
     }
   };
 };
