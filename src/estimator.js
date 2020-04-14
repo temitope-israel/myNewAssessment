@@ -11,17 +11,17 @@ const covid19ImpactEstimator = (data) => {
   let estimatedDays;
   estimatedDays = input.periodType;
   estimatedDays = impact.currentlyInfected * 1024;
-  impact.currentlyInfected = estimatedDays;
+  impact.infectionsByRequestedTime = estimatedDays;
 
   let estimatedWeeks;
   estimatedWeeks = input.periodType;
   estimatedWeeks = impact.currentlyInfected * 146;
-  impact.currentlyInfected = estimatedWeeks;
+  impact.infectionsByRequestedTime = estimatedWeeks;
 
   let estimatedMonths;
   estimatedMonths = input.periodType;
   estimatedMonths = impact.currentlyInfected * 34;
-  impact.currentlyInfected = estimatedMonths;
+  impact.infectionsByRequestedTime = estimatedMonths;
 
   return {
     impact: {
