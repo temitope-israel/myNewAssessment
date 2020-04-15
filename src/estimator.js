@@ -19,7 +19,6 @@ const covid19ImpactEstimator = (data) => {
     periodType = days / 30;
   } else periodType = days;
 
-  let infectionsByRequestedTime;
   infectionsByRequestedTime = impact.currentlyInfected * periodType;
   impact.infectionsByRequestedTime = infectionsByRequestedTime;
   infectionsByRequestedTime = severeImpact.currentlyInfected * periodType;
