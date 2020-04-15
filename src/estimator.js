@@ -8,20 +8,22 @@ const covid19ImpactEstimator = (data) => {
   impact.currentlyInfected = currentlyInfected;
   const severeCurrentlyInfected = input.reportedCases * 50;
   severeImpact.currentlyInfected = severeCurrentlyInfected;
-  let estimatedDays;
-  estimatedDays = input.periodType;
-  estimatedDays = impact.currentlyInfected * 1024;
-  impact.infectionsByRequestedTime = estimatedDays;
+  
+  input.periodType = periodType;
+  let days = 1024;
+  let weeks;
+  let months;
+  if (periodType === weeks){
+    periodType = days / 7;
+  } else if (periodType === months) {
+    periodType = days / 30;
+  } else periodType = days;
 
-  let estimatedWeeks;
-  estimatedWeeks = input.periodType;
-  estimatedWeeks = impact.currentlyInfected * 146;
-  impact.infectionsByRequestedTime = estimatedWeeks;
-
-  let estimatedMonths;
-  estimatedMonths = input.periodType;
-  estimatedMonths = impact.currentlyInfected * 34;
-  impact.infectionsByRequestedTime = estimatedMonths;
+  let infectionsByRequestedTime;
+  infectionsByRequestedTime = impact.currentlyInfected * periodType;
+  impact.infectionsByRequestedTime = infectionsByRequestedTime;
+  infectionsByRequestedTime = severeImpact.currentlyInfected * periodType;
+  severeImpact.infectionsByRequestedTime = infectionsByRequestedTime;
 
   return {
     impact: {
