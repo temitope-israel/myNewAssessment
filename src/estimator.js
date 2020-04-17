@@ -1,4 +1,4 @@
-let reportedCases;
+let reportedCases = 20;
 let currentlyInfected;
 let severeCurrentlyInfected;
 let infectionsByRequestedTime;
@@ -7,7 +7,7 @@ let periodType;
 let impact;
 let severeImpact;
 inputData = {
-    reportedCases,
+    reportedCases
 },
 impact = {
     
@@ -15,45 +15,43 @@ impact = {
 
 severeImpact = {
 
-}
+};
 const covid19ImpactEstimator = (data) => {
-    data = inputData.reportedCases;
-    currentlyInfected = data * 10;
-    impact.currentlyInfected = currentlyInfected;
-    severeCurrentlyInfected = data * 50;
-    severeImpact.currentlyInfected = severeCurrentlyInfected;
+  data = inputData.reportedCases;
+  currentlyInfected = input * 10;
+  impact.currentlyInfected = currentlyInfected;
+  severeCurrentlyInfected = data * 50;
+  severeImpact.currentlyInfected = severeCurrentlyInfected;
 
-    infectionsByRequestedTime = impact.currentlyInfected * 1024;
-    severeInfectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
+  infectionsByRequestedTime = impact.currentlyInfected * 1024;
+  severeInfectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
     
-    function getPeriodType (days){
-        let typeOfPeriod = prompt("Please enter day");
-        
-        days = 1024;
-            let weeks = 7;
-            let months = 30;
-        if(typeOfPeriod === "days") {
-                infectionsByRequestedTime = currentlyInfected * Math.trunc(days);
-                impact.infectionsByRequestedTime = infectionsByRequestedTime;
-                severeInfectionsByRequestedTime = severeCurrentlyInfected * Math.trunc(days);
-                severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
+  function getPeriodType (days){
+    days = 1024;
+    let weeks = 7;
+    let months = 30;
+      if (typeOfPeriod === "days") {
+            infectionsByRequestedTime = currentlyInfected * Math.trunc(days);
+            impact.infectionsByRequestedTime = infectionsByRequestedTime;
+            severeInfectionsByRequestedTime = severeCurrentlyInfected * Math.trunc(days);
+            severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
         }
-        if(typeOfPeriod === "weeks") {
-                   infectionsByRequestedTime = currentlyInfected * Math.trunc((days / weeks) * inputData.periodType);
-                impact.infectionsByRequestedTime = infectionsByRequestedTime;
-                severeInfectionsByRequestedTime = severeCurrentlyInfected * Math.trunc((days / weeks) * inputData.periodType);         
-                severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
-                } else {
-                infectionsByRequestedTime = currentlyInfected * Math.trunc((days / months) * inputData.periodType);
-                impact.infectionsByRequestedTime = infectionsByRequestedTime;
-                severeInfectionsByRequestedTime = severeCurrentlyInfected * Math.trunc((days / months) * inputData.periodType)
-                severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
+      if (typeOfPeriod === "weeks") {    
+            infectionsByRequestedTime = currentlyInfected * Math.trunc((days / weeks) * inputData.periodType);
+            impact.infectionsByRequestedTime = infectionsByRequestedTime;
+            severeInfectionsByRequestedTime = severeCurrentlyInfected * Math.trunc((days / weeks) * inputData.periodType);         
+            severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
+        } else {
+            infectionsByRequestedTime = currentlyInfected * Math.trunc((days / months) * inputData.periodType);
+            impact.infectionsByRequestedTime = infectionsByRequestedTime;
+            severeInfectionsByRequestedTime = severeCurrentlyInfected * Math.trunc((days / months) * inputData.periodType)
+            severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
                 } 
-                return {
-                    days,
-                    weeks,
-                    months,
-                    typeOfPeriod
+        return {
+                days,
+                weeks,
+                months,
+                typeOfPeriod
                 }
         }
         
@@ -61,17 +59,17 @@ const covid19ImpactEstimator = (data) => {
     
     getPeriodType(periodType);
 
-    return {
+  return {
         data: {
             inputData
         },
         impact: {
-                currentlyInfected,
-                infectionsByRequestedTime
+            currentlyInfected,
+            infectionsByRequestedTime
         },
         severeimpact: {
-                severeCurrentlyInfected,
-                severeInfectionsByRequestedTime
+            severeCurrentlyInfected,
+            severeInfectionsByRequestedTime
         }
     }
 }
