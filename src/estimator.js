@@ -53,12 +53,13 @@ const covid19ImpactEstimator = (data) => {
       * Math.trunc((myDays / months) * inputData.periodType);
       severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
     }
+    expect(impact).toMatchObject(severeImpact);
     return {
       days,
       weeks,
       months,
       typeOfPeriod
-    };
+    };    
   }
 
   getPeriodType(periodType);
