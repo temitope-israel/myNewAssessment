@@ -4,8 +4,8 @@ let severeCurrentlyInfected;
 let infectionsByRequestedTime;
 let severeInfectionsByRequestedTime;
 let periodType;
-const inputData;
-inputData = {
+
+const inputData = {
   reportedCases
 };
 const impact = {
