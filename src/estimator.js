@@ -16,7 +16,7 @@ const severeImpact = {
 
 };
 const covid19ImpactEstimator = (data) => {
-  myData = data;
+  let myData = data;
   myData = inputData.reportedCases;
   currentlyInfected = myData * 10;
   impact.currentlyInfected = currentlyInfected;
@@ -27,7 +27,7 @@ const covid19ImpactEstimator = (data) => {
   severeInfectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
 
   function getPeriodType(days) {
-    const myDays = days;
+    let myDays = days;
     myDays = 1024;
     const weeks = 7;
     const months = 30;
