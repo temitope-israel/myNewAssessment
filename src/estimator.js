@@ -9,11 +9,13 @@ const inputData = {
   reportedCases
 };
 const impact = {
-
+  currentlyInfected: 50,
+  infectionsByRequestedTime: 30
 };
 
 const severeImpact = {
-
+  currentlyInfected: 20,
+  infectionsByRequestedTime: 15
 };
 const covid19ImpactEstimator = (data) => {
   let myData = data;
@@ -59,7 +61,7 @@ const covid19ImpactEstimator = (data) => {
       weeks,
       months,
       typeOfPeriod
-    };    
+    };
   }
 
   getPeriodType(periodType);
