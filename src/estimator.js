@@ -6,7 +6,7 @@ let periodType;
 
 const inputData = {
   reportedCases: 674,
-  periodType: "days"
+  periodType: 'days'
 };
 const impact = {
   currentlyInfected: 50,
