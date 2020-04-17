@@ -6,7 +6,7 @@ let periodType;
 
 const inputData = {
   reportedCases: 674,
-  periodType
+  periodType: "days"
 };
 const impact = {
   currentlyInfected: 50,
@@ -40,18 +40,18 @@ const covid19ImpactEstimator = (data) => {
     }
     if (typeOfPeriod === 'weeks') {
       infectionsByRequestedTime = Math.trunc(impact.currentlyInfected
-      * (myDays / weeks) * inputData.periodType);
+      * (myDays / weeks));
       impact.infectionsByRequestedTime = infectionsByRequestedTime;
       severeInfectionsByRequestedTime = Math.trunc(severeImpact.severeCurrentlyInfected
-      * (myDays / weeks) * inputData.periodType);
+      * (myDays / weeks));
       severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
       expect(impact).toMatchObject(severeImpact);
     } else {
       infectionsByRequestedTime = Math.trunc(impact.currentlyInfected
-      * (myDays / months) * inputData.periodType);
+      * (myDays / months));
       impact.infectionsByRequestedTime = infectionsByRequestedTime;
       severeInfectionsByRequestedTime = Math.trunc(severeImpact.severeCurrentlyInfected
-      * (myDays / months) * inputData.periodType);
+      * (myDays / months));
       severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
       expect(impact).toMatchObject(severeImpact);
     }
