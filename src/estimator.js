@@ -1,4 +1,3 @@
-const reportedCases = 20;
 let currentlyInfected;
 let severeCurrentlyInfected;
 let infectionsByRequestedTime;
@@ -6,7 +5,8 @@ let severeInfectionsByRequestedTime;
 let periodType;
 
 const inputData = {
-  reportedCases
+  reportedCases: 674,
+  periodType
 };
 const impact = {
   currentlyInfected: 50,
@@ -32,26 +32,26 @@ const covid19ImpactEstimator = (data) => {
     const months = 30;
     let typeOfPeriod;
     if (typeOfPeriod === 'days') {
-      infectionsByRequestedTime = impact.currentlyInfected * Math.trunc(myDays);
+      infectionsByRequestedTime = Math.trunc(impact.currentlyInfected * myDays);
       impact.infectionsByRequestedTime = infectionsByRequestedTime;
-      severeInfectionsByRequestedTime = severeImpact.severeCurrentlyInfected * Math.trunc(myDays);
+      severeInfectionsByRequestedTime = Math.trunc(severeImpact.severeCurrentlyInfected * myDays);
       severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
       expect(impact).toMatchObject(severeImpact);
     }
     if (typeOfPeriod === 'weeks') {
-      infectionsByRequestedTime = impact.currentlyInfected
-      * Math.trunc((myDays / weeks) * inputData.periodType);
+      infectionsByRequestedTime = Math.trunc(impact.currentlyInfected
+      * (myDays / weeks) * inputData.periodType);
       impact.infectionsByRequestedTime = infectionsByRequestedTime;
-      severeInfectionsByRequestedTime = severeImpact.severeCurrentlyInfected
-      * Math.trunc((myDays / weeks) * inputData.periodType);
+      severeInfectionsByRequestedTime = Math.trunc(severeImpact.severeCurrentlyInfected
+      * (myDays / weeks) * inputData.periodType);
       severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
       expect(impact).toMatchObject(severeImpact);
     } else {
-      infectionsByRequestedTime = impact.currentlyInfected
-      * Math.trunc((myDays / months) * inputData.periodType);
+      infectionsByRequestedTime = Math.trunc(impact.currentlyInfected
+      * (myDays / months) * inputData.periodType);
       impact.infectionsByRequestedTime = infectionsByRequestedTime;
-      severeInfectionsByRequestedTime = severeImpact.severeCurrentlyInfected
-      * Math.trunc((myDays / months) * inputData.periodType);
+      severeInfectionsByRequestedTime = Math.trunc(severeImpact.severeCurrentlyInfected
+      * (myDays / months) * inputData.periodType);
       severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
       expect(impact).toMatchObject(severeImpact);
     }
