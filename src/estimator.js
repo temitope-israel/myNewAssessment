@@ -16,40 +16,41 @@ const severeImpact = {
 
 };
 const covid19ImpactEstimator = (data) => {
-  data = inputData.reportedCases;
-  currentlyInfected = data * 10;
+  myData = data;
+  myData = inputData.reportedCases;
+  currentlyInfected = myData * 10;
   impact.currentlyInfected = currentlyInfected;
-  severeCurrentlyInfected = data * 50;
+  severeCurrentlyInfected = myData * 50;
   severeImpact.currentlyInfected = severeCurrentlyInfected;
 
   infectionsByRequestedTime = impact.currentlyInfected * 1024;
   severeInfectionsByRequestedTime = severeImpact.currentlyInfected * 1024;
 
   function getPeriodType(days) {
-    const myDays = 1024;
-    days = myDays;
+    const myDays = days;
+    myDays = 1024;
     const weeks = 7;
     const months = 30;
     let typeOfPeriod;
     if (typeOfPeriod === 'days') {
-      infectionsByRequestedTime = currentlyInfected * Math.trunc(days);
+      infectionsByRequestedTime = currentlyInfected * Math.trunc(myDays);
       impact.infectionsByRequestedTime = infectionsByRequestedTime;
-      severeInfectionsByRequestedTime = severeCurrentlyInfected * Math.trunc(days);
+      severeInfectionsByRequestedTime = severeCurrentlyInfected * Math.trunc(myDays);
       severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
     }
     if (typeOfPeriod === 'weeks') {
       infectionsByRequestedTime = currentlyInfected
-      * Math.trunc((days / weeks) * inputData.periodType);
+      * Math.trunc((myDays / weeks) * inputData.periodType);
       impact.infectionsByRequestedTime = infectionsByRequestedTime;
       severeInfectionsByRequestedTime = severeCurrentlyInfected
-      * Math.trunc((days / weeks) * inputData.periodType);
+      * Math.trunc((myDays / weeks) * inputData.periodType);
       severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
     } else {
       infectionsByRequestedTime = currentlyInfected
-      * Math.trunc((days / months) * inputData.periodType);
+      * Math.trunc((myDays / months) * inputData.periodType);
       impact.infectionsByRequestedTime = infectionsByRequestedTime;
       severeInfectionsByRequestedTime = severeCurrentlyInfected
-      * Math.trunc((days / months) * inputData.periodType);
+      * Math.trunc((myDays / months) * inputData.periodType);
       severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
     }
     return {
