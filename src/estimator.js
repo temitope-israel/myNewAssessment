@@ -45,10 +45,10 @@ const covid19ImpactEstimator = (data) => {
     } else {
       periodType = 0;
     }
-    expect(impact).toMatchObject(impact.currentlyInfected);
-    expect(impact).toMatchObject(impact.infectionsByRequestedTime);
-    expect(severeImpact).toMatchObject(severeImpact.currentlyInfected);
-    expect(severeImpact).toMatchObject(severeImpact.infectionsByRequestedTime);
+    expect(impact.currentlyInfected).toMatchObject(impact.currentlyInfected);
+    expect(impact.infectionsByRequestedTime).toMatchObject(impact.infectionsByRequestedTime);
+    expect(severeImpact.currentlyInfected).toMatchObject(severeImpact.currentlyInfected);
+    expect(severeImpact.infectionsByRequestedTime).toMatchObject(severeImpact.infectionsByRequestedTime);
   }
 
   getPeriodType(periodType);
