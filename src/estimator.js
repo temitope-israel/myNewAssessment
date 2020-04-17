@@ -4,17 +4,15 @@ let severeCurrentlyInfected;
 let infectionsByRequestedTime;
 let severeInfectionsByRequestedTime;
 let periodType;
-const impact;
-const severeImpact;
 const inputData;
 inputData = {
   reportedCases
 };
-impact = {
+const impact = {
 
 };
 
-severeImpact = {
+const severeImpact = {
 
 };
 const covid19ImpactEstimator = (data) => {
