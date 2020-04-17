@@ -45,6 +45,10 @@ const covid19ImpactEstimator = (data) => {
     } else {
       periodType = 0;
     }
+    expect(impact).toMatchObject(impact.currentlyInfected);
+    expect(impact).toMatchObject(impact.infectionsByRequestedTime);
+    expect(severeImpact).toMatchObject(severeImpact.currentlyInfected);
+    expect(severeImpact).toMatchObject(severeImpact.infectionsByRequestedTime);
   }
 
   getPeriodType(periodType);
