@@ -10,7 +10,7 @@ const covid19ImpactEstimator = (data) => {
   //  Input data
   myData = {
     periodType: 'days',
-    reportedCases: 40
+    reportedCases: 674
   };
 
   impact = {
@@ -39,6 +39,8 @@ const covid19ImpactEstimator = (data) => {
     if (period === 'days') {
       impact.infectionsByRequestedTime = impact.currentlyInfected * days;
       severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * days;
+      impact.currentlyInfected = impact.infectionsByRequestedTime;
+      severeImpact.currentlyInfected = severeImpact.infectionsByRequestedTime;
     } else if (period === 'weeks') {
       impact.infectionsByRequestedTime = impact.currentlyInfected * weeks;
       severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * weeks;
