@@ -1,72 +1,69 @@
+let reportedCases;
 let currentlyInfected;
 let severeCurrentlyInfected;
-let infectionsByRequestedTime;
-let severeInfectionsByRequestedTime;
-let periodType;
-
-const inputData = {
-  reportedCases: 674,
-  periodType: 'days'
-};
-const impact = {
-  currentlyInfected,
-  infectionsByRequestedTime
-};
-
-const severeImpact = {
-  currentlyInfected,
-  infectionsByRequestedTime
-};
 const covid19ImpactEstimator = (data) => {
-  let myData = data;
-  myData = inputData.reportedCases;
-  currentlyInfected = myData * 10;
-  impact.currentlyInfected = currentlyInfected;
-  severeCurrentlyInfected = myData * 50;
-  severeImpact.currentlyInfected = severeCurrentlyInfected;
+myData = data;
 
-  function getPeriodType(days) {
-    let myDays = days;
-    const months = myDays / 30;
-    myDays -= months * 30;
-    const weeks = myDays / 7;
-    myDays -= weeks * 7;
-    periodType = inputData.periodType;
-    if (periodType === 'days') {
-      myDays = 1024;
-      infectionsByRequestedTime = Math.trunc(impact.currentlyInfected * myDays);
-      infectionsByRequestedTime = Math.trunc(impact.currentlyInfected * weeks);
-      infectionsByRequestedTime = Math.trunc(impact.currentlyInfected * months);
-      impact.infectionsByRequestedTime = infectionsByRequestedTime;
-      severeInfectionsByRequestedTime = Math.trunc(severeImpact.currentlyInfected * myDays);
-      severeInfectionsByRequestedTime = Math.trunc(severeImpact.currentlyInfected * weeks);
-      severeInfectionsByRequestedTime = Math.trunc(severeImpact.currentlyInfected * months);
-      severeImpact.infectionsByRequestedTime = severeInfectionsByRequestedTime;
-    } else {
-      periodType = 0;
-    }
-    expect(impact.currentlyInfected).toMatchObject(impact.currentlyInfected);
-    expect(impact.infectionsByRequestedTime).toMatchObject(impact.infectionsByRequestedTime);
-    expect(severeImpact.currentlyInfected).toMatchObject(severeImpact.currentlyInfected);
-    expect(severeImpact.infectionsByRequestedTime)
-      .toMatchObject(severeImpact.infectionsByRequestedTime);
-  }
-
-  getPeriodType(periodType);
-
-  return {
-    data: {
-      inputData
-    },
-    impact: {
-      currentlyInfected,
-      infectionsByRequestedTime
-    },
-    severeimpact: {
-      severeCurrentlyInfected,
-      severeInfectionsByRequestedTime
-    }
-  };
+//  Input data
+myData = {
+periodType: "months",
+theDays: 50,
+reportedCases: 40
 };
+
+impact = {
+currentlyInfected: 20
+};
+
+severeImpact = {
+currentlyInfected: 40
+};
+
+reportedCases = myData.reportedCases;
+currentlyInfected = reportedCases * 10;
+severeCurrentlyInfected = reportedCases * 50;
+
+//  Output Estimate of Currently Infected
+impact.currentlyInfected = currentlyInfected;
+severeImpact.currentlyInfected = severeCurrentlyInfected;
+
+//  Call of INfections by requested time calculation function
+getPeriod(myData.periodType);
+
+return {
+  data, 
+  impact, 
+  severeImpact
+}
+}//  Function Main Ends Here....
+
+//  Calculation for Infections By requested Time
+function getPeriod(period) {
+  let days;
+  let weeks;
+  let months;
+  months = 1024;
+  days = Math.trunc(months / 30);
+  weeks = Math.trunc(days * 7);
+  months = Math.trunc(days * 30);
+
+  if (period === "days") {
+    impact.infectionsByRequestedTime = impact.currentlyInfected * days;
+    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * days;
+  } 
+  else if (period === "weeks") {
+    impact.infectionsByRequestedTime = impact.currentlyInfected * weeks;
+    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * weeks;  
+  } 
+  else if (period === "months") {
+    impact.infectionsByRequestedTime = impact.currentlyInfected * months;
+    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * months;
+  } 
+  else {
+    period = 0;
+  }
+    
+  return {days, weeks, months}
+  }
 
 export default covid19ImpactEstimator;
