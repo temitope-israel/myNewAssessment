@@ -31,23 +31,6 @@ const covid19ImpactEstimator = (data) => {
     currentlyInfected: 40
   };
 
-  //  Calculation for Infections By requested Time
-  function getPeriod(period) {
-    const days = myData.timeToElapse;
-    const weeks = Math.trunc(myData.timeToElapse * 7);
-    const months = Math.trunc(myData.timeToElapse * 30);
-
-    if (period === 'weeks') {
-      infectionsByTime = Math.trunc(myData.timeToElapse * 7);
-    } else if (period === 'months') {
-      infectionsByTime = Math.trunc(myData.timeToElapse * 30);
-    } else {
-      infectionsByTime = myData.timeToElapse;
-    }
-
-    return { days, weeks, months };
-  }
-
   reportedCases = myData.reportedCases;
   currentlyInfected = reportedCases * 10;
   severeCurrentlyInfected = reportedCases * 50;
@@ -55,16 +38,28 @@ const covid19ImpactEstimator = (data) => {
   //  Output Estimate of Currently Infected
   impact.currentlyInfected = currentlyInfected;
   severeImpact.currentlyInfected = severeCurrentlyInfected;
+  //  Calculation for Infections By requested Time
+  const days = myData.timeToElapse;
+  const weeks = Math.trunc(myData.timeToElapse * 7);
+  const months = Math.trunc(myData.timeToElapse * 30);
 
+  if (period === 'weeks') {
+    infectionsByTime = Math.trunc(myData.timeToElapse * 7);
+  } else if (period === 'months') {
+    infectionsByTime = Math.trunc(myData.timeToElapse * 30);
+  } else {
+    infectionsByTime = myData.timeToElapse;
+  }
+
+//  return { days, weeks, months };
   // Estimation in Days
   if (myData.timeToElapse) {
-    getPeriod(myData.periodType);
     // For Current Projection
     impact.currentlyInfected *= (infectionsByTime);
     impact.currentlyInfected = impact.infectionsByTime;
 
     //  For Projected Days
-    severeImpact.currentlyInfected *= Math.trunc((2 ** 19) / days.getPeriod());
+    severeImpact.currentlyInfected *= Math.trunc((2 ** 19) / days);
     severeImpact.currentlyInfected = severeImpact.infectionsByTime;
   }
 
