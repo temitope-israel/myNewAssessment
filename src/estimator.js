@@ -51,7 +51,7 @@ const covid19ImpactEstimator = (data) => {
   }
 
 
-//  Call of INfections by requested time calculation function
+  //  Call of INfections by requested time calculation function
   getPeriod(myData.periodType);
 
   return {
