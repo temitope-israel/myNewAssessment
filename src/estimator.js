@@ -53,7 +53,7 @@ const covid19ImpactEstimator = (data) => {
     daysInfectionsByTime = days;
   }
 
-//  return { days, weeks, months };
+  //  return { days, weeks, months };
   // Estimation in Days
   if (myData.periodType === 'weeks') {
     // For Current Week & Projected Week
