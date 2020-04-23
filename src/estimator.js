@@ -60,6 +60,7 @@ function getPeriod(period) {
 
 
 //  Call of INfections by requested time calculation function
-getPeriod(myData.periodType);
+myData.periodType = periodType;
+getPeriod(periodType);
 
 export default covid19ImpactEstimator;
