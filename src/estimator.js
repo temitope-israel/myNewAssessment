@@ -4,13 +4,23 @@ let severeCurrentlyInfected;
 let myData;
 let impact;
 let severeImpact;
+let timeToElapse;
 const covid19ImpactEstimator = (data) => {
   myData = data;
 
   //  Input data
   myData = {
+    region: {
+      name: 'Africa',
+      avgAge: 19.7,
+      avgDailyIncomeInUSD: 5,
+      avgDailyIncomePopulation: 0.71
+    },
     periodType: 'days',
-    reportedCases: 674
+    timeToElapse: 58,
+    reportedCases: 674,
+    population: 6622705,
+    totalHospitalBeds: 1380614
   };
 
   impact = {
@@ -31,22 +41,21 @@ const covid19ImpactEstimator = (data) => {
   //  Calculation for Infections By requested Time
   function getPeriod(period) {
     let months;
-    //  months = 1024;
-    const days = Math.trunc(months / 30);
-    const weeks = Math.trunc(days * 7);
-    months = Math.trunc(days * 30);
+    const days = myData.timeToElapse;
+    const weeks = Math.trunc(myData.timeToElapse * 7);
+    months = Math.trunc(myData.timeToElapse * 30);
 
-    if (period === 'days') {
-      impact.infectionsByRequestedTime = impact.currentlyInfected * days;
-      severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * days;
-      impact.currentlyInfected = impact.infectionsByRequestedTime;
-      severeImpact.currentlyInfected = severeImpact.infectionsByRequestedTime;
-    } else if (period === 'weeks') {
+    if (period === 'weeks') {
       impact.infectionsByRequestedTime = impact.currentlyInfected * weeks;
       severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * weeks;
-    } else {
+      impact.currentlyInfected = impact.infectionsByRequestedTime;
+      severeImpact.currentlyInfected = severeImpact.infectionsByRequestedTime;
+    } else if (period === 'months') {
       impact.infectionsByRequestedTime = impact.currentlyInfected * months;
       severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * months;
+    } else {
+      impact.infectionsByRequestedTime = impact.currentlyInfected * days;
+      severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * days;
     }
 
     return { days, weeks, months };
