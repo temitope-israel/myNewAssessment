@@ -28,15 +28,7 @@ const covid19ImpactEstimator = (data) => {
   //  Output Estimate of Currently Infected
   impact.currentlyInfected = currentlyInfected;
   severeImpact.currentlyInfected = severeCurrentlyInfected;
-
-  return {
-    data,
-    impact,
-    severeImpact
-  };
-};//  Function Main Ends Here....
-
-//  Calculation for Infections By requested Time
+  //  Calculation for Infections By requested Time
 function getPeriod(period) {
   let months;
   months = 1024;
@@ -60,6 +52,13 @@ function getPeriod(period) {
 
 
 //  Call of INfections by requested time calculation function
-getPeriod(periodType);
+getPeriod(myData.periodType);
+
+  return {
+    data,
+    impact,
+    severeImpact
+  };
+};//  Function Main Ends Here....
 
 export default covid19ImpactEstimator;
