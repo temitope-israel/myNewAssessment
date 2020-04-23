@@ -31,7 +31,7 @@ const covid19ImpactEstimator = (data) => {
   //  Calculation for Infections By requested Time
   function getPeriod(period) {
     let months;
-    months = 1024;
+    //  months = 1024;
     const days = Math.trunc(months / 30);
     const weeks = Math.trunc(days * 7);
     months = Math.trunc(days * 30);
