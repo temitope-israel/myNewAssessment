@@ -1,15 +1,15 @@
 let reportedCases;
 let currentlyInfected;
-let severeCurrentlyInfected; 
-let myData; 
-let impact; 
+let severeCurrentlyInfected;
+let myData;
+let impact;
 let severeImpact;
 const covid19ImpactEstimator = (data) => {
   myData = data;
 
   //  Input data
   myData = {
-    periodType: "days",
+    periodType: 'days',
     reportedCases: 40
   };
 
@@ -38,7 +38,8 @@ const covid19ImpactEstimator = (data) => {
 
 //  Calculation for Infections By requested Time
 function getPeriod(period) {
-  const months = 1024;
+  let months;
+  months = 1024;
   const days = Math.trunc(months / 30);
   const weeks = Math.trunc(days * 7);
   months = Math.trunc(days * 30);
@@ -49,18 +50,16 @@ function getPeriod(period) {
   } else if (period === 'weeks') {
     impact.infectionsByRequestedTime = impact.currentlyInfected * weeks;
     severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * weeks;
-  } else if (period === 'months') {
+  } else {
     impact.infectionsByRequestedTime = impact.currentlyInfected * months;
     severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * months;
-  } else {
-    period === 0;
   }
 
   return { days, weeks, months };
 }
 
 
-  //  Call of INfections by requested time calculation function
-  getPeriod(myData.periodType);
+//  Call of INfections by requested time calculation function
+getPeriod(myData.periodType);
 
 export default covid19ImpactEstimator;
