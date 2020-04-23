@@ -56,18 +56,15 @@ const covid19ImpactEstimator = (data) => {
   impact.currentlyInfected = currentlyInfected;
   severeImpact.currentlyInfected = severeCurrentlyInfected;
 
-  let cEstimationDays;
-  let cEstimationWeeks;
-  let cEstimationMonths;
   // Estimation in Days
-  if (myData.timeToElapse ) {
+  if (myData.timeToElapse) {
     getPeriod(myData.periodType);
     // For Current Projection
     impact.currentlyInfected = impact.currentlyInfected * (infectionsByTime);
     impact.currentlyInfected = impact.infectionsByTime;
 
     //  For Projected Days
-    severeImpact.currentlyInfected = severeImpact.currentlyInfected * Math.trunc((2 ** 19) / days)
+    severeImpact.currentlyInfected = severeImpact.currentlyInfected * Math.trunc((2 ** 19) / days);
     severeImpact.currentlyInfected = severeImpact.infectionsByTime;
   }
 
