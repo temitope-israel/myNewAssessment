@@ -68,7 +68,6 @@ const covid19ImpactEstimator = (data) => {
     severeImpact.currentlyInfected = severeImpact.infectionsByTime;
   }
 
-
   return {
     data,
     impact,
