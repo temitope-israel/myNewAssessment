@@ -4,7 +4,6 @@ let severeCurrentlyInfected;
 let myData;
 let impact;
 let severeImpact;
-let timeToElapse;
 const covid19ImpactEstimator = (data) => {
   myData = data;
 
@@ -40,10 +39,9 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.currentlyInfected = severeCurrentlyInfected;
   //  Calculation for Infections By requested Time
   function getPeriod(period) {
-    let months;
     const days = myData.timeToElapse;
     const weeks = Math.trunc(myData.timeToElapse * 7);
-    months = Math.trunc(myData.timeToElapse * 30);
+    const months = Math.trunc(myData.timeToElapse * 30);
 
     if (period === 'weeks') {
       impact.infectionsByRequestedTime = impact.currentlyInfected * weeks;
