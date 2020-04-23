@@ -29,30 +29,30 @@ const covid19ImpactEstimator = (data) => {
   impact.currentlyInfected = currentlyInfected;
   severeImpact.currentlyInfected = severeCurrentlyInfected;
   //  Calculation for Infections By requested Time
-function getPeriod(period) {
-  let months;
-  months = 1024;
-  const days = Math.trunc(months / 30);
-  const weeks = Math.trunc(days * 7);
-  months = Math.trunc(days * 30);
+  function getPeriod(period) {
+    let months;
+    months = 1024;
+    const days = Math.trunc(months / 30);
+    const weeks = Math.trunc(days * 7);
+    months = Math.trunc(days * 30);
 
-  if (period === 'days') {
-    impact.infectionsByRequestedTime = impact.currentlyInfected * days;
-    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * days;
-  } else if (period === 'weeks') {
-    impact.infectionsByRequestedTime = impact.currentlyInfected * weeks;
-    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * weeks;
-  } else {
-    impact.infectionsByRequestedTime = impact.currentlyInfected * months;
-    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * months;
+    if (period === 'days') {
+      impact.infectionsByRequestedTime = impact.currentlyInfected * days;
+      severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * days;
+    } else if (period === 'weeks') {
+      impact.infectionsByRequestedTime = impact.currentlyInfected * weeks;
+      severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * weeks;
+    } else {
+      impact.infectionsByRequestedTime = impact.currentlyInfected * months;
+      severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * months;
+    }
+
+    return { days, weeks, months };
   }
-
-  return { days, weeks, months };
-}
 
 
 //  Call of INfections by requested time calculation function
-getPeriod(myData.periodType);
+  getPeriod(myData.periodType);
 
   return {
     data,
