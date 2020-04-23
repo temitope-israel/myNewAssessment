@@ -40,7 +40,7 @@ const covid19ImpactEstimator = (data) => {
     if (period === 'weeks') {
       infectionsByTime = Math.trunc(myData.timeToElapse * 7);
     } else if (period === 'months') {
-      infectionsByTime = Math.trunc(myData.timeToElapse * 30)
+      infectionsByTime = Math.trunc(myData.timeToElapse * 30);
     } else {
       infectionsByTime = myData.timeToElapse;
     }
@@ -60,11 +60,11 @@ const covid19ImpactEstimator = (data) => {
   if (myData.timeToElapse) {
     getPeriod(myData.periodType);
     // For Current Projection
-    impact.currentlyInfected = impact.currentlyInfected * (infectionsByTime);
+    impact.currentlyInfected *= (infectionsByTime);
     impact.currentlyInfected = impact.infectionsByTime;
 
     //  For Projected Days
-    severeImpact.currentlyInfected = severeImpact.currentlyInfected * Math.trunc((2 ** 19) / days);
+    severeImpact.currentlyInfected *= Math.trunc((2 ** 19) / days.getPeriod());
     severeImpact.currentlyInfected = severeImpact.infectionsByTime;
   }
 
