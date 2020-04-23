@@ -29,9 +29,6 @@ const covid19ImpactEstimator = (data) => {
   impact.currentlyInfected = currentlyInfected;
   severeImpact.currentlyInfected = severeCurrentlyInfected;
 
-  //  Call of INfections by requested time calculation function
-  getPeriod(myData.periodType);
-
   return {
     data,
     impact,
@@ -41,12 +38,9 @@ const covid19ImpactEstimator = (data) => {
 
 //  Calculation for Infections By requested Time
 function getPeriod(period) {
-  const days;
-  const weeks;
-  const months;
-  months = 1024;
-  days = Math.trunc(months / 30);
-  weeks = Math.trunc(days * 7);
+  const months = 1024;
+  const days = Math.trunc(months / 30);
+  const weeks = Math.trunc(days * 7);
   months = Math.trunc(days * 30);
 
   if (period === 'days') {
@@ -64,5 +58,9 @@ function getPeriod(period) {
 
   return { days, weeks, months };
 }
+
+
+  //  Call of INfections by requested time calculation function
+  getPeriod(myData.periodType);
 
 export default covid19ImpactEstimator;
