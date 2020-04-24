@@ -33,7 +33,7 @@ const covid19ImpactEstimator = (data) => {
   //  return { days, weeks, months };
   // Estimation in Weeks
 
-    // For Projected Days
+  // For Projected Days
   impact.infectionsByRequestedTime = impact.currentlyInfected
   * Math.trunc(2 ** (infectionTime / 3));
 
