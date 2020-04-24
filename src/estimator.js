@@ -27,26 +27,36 @@ const covid19ImpactEstimator = (data) => {
   const days = data.timeToElapse; // 58
   const weeks = Math.trunc(data.timeToElapse / 7);
   const months = Math.trunc(data.timeToElapse / 30);
+  let weeksCurrentlyInfected;
+  let monthsCurrentlyInfected;
+  let weeksSevereCurrentlyInfected;
+  let monthsSevereCurrentlyInfected;
 
   //  return { days, weeks, months };
   // Estimation in Weeks
   if (data.periodType === 'days') {
     // For Projected Days
-    impact.infectionsByRequestedTime = impact.currentlyInfected * Math.trunc(2 ** (days / 3));
-    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected
-    * Math.trunc(2 ** (days / 3));
-  } else if (data.periodType === 'days') {
-    //  For  Projected Months
-    impact.infectionsByRequestedTime = impact.currentlyInfected
-    * Math.trunc((2 ** (days / 3)) * weeks);
-    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected
-    * Math.trunc((2 ** (days / 3)) * weeks);
+    currentlyInfected = impact.currentlyInfected * Math.trunc(2 ** (days / 3));
+
+    weeksCurrentlyInfected = impact.currentlyInfected * Math.trunc((2 ** (days / 3)) * weeks);
+
+    monthsCurrentlyInfected = impact.currentlyInfected * Math.trunc((2 ** (days / 3)) * months);
+
+    severeCurrentlyInfected = severeImpact.currentlyInfected * Math.trunc(2 ** (days / 3));
+
+    weeksSevereCurrentlyInfected = severeImpact.currentlyInfected * Math.trunc((2 ** (days / 3)) * weeks);
+
+    monthsSevereCurrentlyInfected = severeImpact.currentlyInfected * Math.trunc((2 ** (days / 3)) * months);
+
+    currentlyInfected = impact.infectionsByRequestedTime;
+    weeksCurrentlyInfected = impact.infectionsByRequestedTime;
+    monthsCurrentlyInfected = impact.infectionsByRequestedTime;
+
+    severeCurrentlyInfected = severeImpact.infectionsByRequestedTime;
+    weeksSevereCurrentlyInfected = severeImpact.infectionsByRequestedTime;
+    monthsSevereCurrentlyInfected = severeImpact.infectionsByRequestedTime;
   } else {
-    // For Current Projection
-    impact.infectionsByRequestedTime = impact.currentlyInfected
-    * Math.trunc((2 ** (days / 3)) / months);
-    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected
-    * Math.trunc((2 ** (days / 3)) / months);
+    data.periodType = 0;
   }
 
   return {
