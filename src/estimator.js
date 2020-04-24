@@ -4,9 +4,6 @@ let severeCurrentlyInfected;
 let myData;
 let impact;
 let severeImpact;
-let daysInfectionsByTime;
-let weeksInfectionsByTime;
-let monthsInfectionsByTime;
 const covid19ImpactEstimator = (data) => {
   myData = data;
 
@@ -46,36 +43,28 @@ const covid19ImpactEstimator = (data) => {
   const weeks = Math.trunc(myData.timeToElapse * 7);
   const months = Math.trunc(myData.timeToElapse * 30);
 
-  if (myData.periodType === 'weeks') {
-    weeksInfectionsByTime = weeks;
-  } else if (myData.periodType === 'months') {
-    monthsInfectionsByTime = months;
-  } else {
-    daysInfectionsByTime = days;
-  } //  Ends Here...
-
   //  return { days, weeks, months };
   // Estimation in Weeks
   if (myData.periodType === 'days') {
     // For Current Week & Projected Week
-    currentlyInfected *= daysInfectionsByTime;
+    currentlyInfected *= days;
     impact.infectionsByRequestedTime = currentlyInfected;
 
-    severeCurrentlyInfected *= Math.trunc((2 ** 19) / daysInfectionsByTime);
+    severeCurrentlyInfected *= Math.trunc((2 ** 19) / days);
     severeImpact.infectionsByRequestedTime = severeCurrentlyInfected;
   } else if (myData.periodType === 'weeks') {
     //  For Current Month & Projected Months
-    currentlyInfected *= weeksInfectionsByTime;
+    currentlyInfected *= weeks;
     impact.infectionsByRequestedTime = currentlyInfected;
 
-    severeCurrentlyInfected *= Math.trunc((2 ** 19) / weeksInfectionsByTime);
+    severeCurrentlyInfected *= Math.trunc((2 ** 19) / weeks);
     severeImpact.infectionsByRequestedTime = severeCurrentlyInfected;
   } else {
     // For Current Projection
-    currentlyInfected *= monthsInfectionsByTime;
+    currentlyInfected *= months;
     impact.infectionsByRequestedTime = currentlyInfected;
 
-    severeCurrentlyInfected *= Math.trunc((2 ** 19) / monthsInfectionsByTime);
+    severeCurrentlyInfected *= Math.trunc((2 ** 19) / months);
     severeImpact.infectionsByRequestedTime = severeCurrentlyInfected;
   }
 
