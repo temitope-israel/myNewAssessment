@@ -47,25 +47,25 @@ const covid19ImpactEstimator = (data) => {
   // Estimation in Weeks
   if (myData.periodType === 'days') {
     // For Current Week & Projected Week
-    currentlyInfected *= days;
-    impact.infectionsByRequestedTime = currentlyInfected;
+    impact.currentlyInfected *= days;
+    impact.infectionsByRequestedTime = impact.currentlyInfected;
 
-    severeCurrentlyInfected *= Math.trunc((2 ** 19) / days);
-    severeImpact.infectionsByRequestedTime = severeCurrentlyInfected;
+    severeImpact.currentlyInfected *= Math.trunc((2 ** 19) / days);
+    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected;
   } else if (myData.periodType === 'weeks') {
     //  For Current Month & Projected Months
-    currentlyInfected *= weeks;
-    impact.infectionsByRequestedTime = currentlyInfected;
+    impact.currentlyInfected *= weeks;
+    impact.infectionsByRequestedTime = impact.currentlyInfected;
 
-    severeCurrentlyInfected *= Math.trunc((2 ** 19) / weeks);
-    severeImpact.infectionsByRequestedTime = severeCurrentlyInfected;
+    severeImpact.currentlyInfected *= Math.trunc((2 ** 19) / weeks);
+    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected;
   } else {
     // For Current Projection
-    currentlyInfected *= months;
-    impact.infectionsByRequestedTime = currentlyInfected;
+    impact.currentlyInfected *= months;
+    impact.infectionsByRequestedTime = impact.currentlyInfected;
 
-    severeCurrentlyInfected *= Math.trunc((2 ** 19) / months);
-    severeImpact.infectionsByRequestedTime = severeCurrentlyInfected;
+    severeImpact.currentlyInfected *= Math.trunc((2 ** 19) / months);
+    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected;
   }
 
   return {
