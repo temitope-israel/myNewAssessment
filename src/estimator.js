@@ -32,7 +32,6 @@ const covid19ImpactEstimator = (data) => {
   } else {
     infectionTime = data.timeToElapse;
   }
-   // 58
   //  return { days, weeks, months };
   // Estimation in Weeks
 
