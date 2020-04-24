@@ -20,7 +20,7 @@ const covid19ImpactEstimator = (data) => {
     },
     periodType: 'days',
     timeToElapse: 58,
-    reportedCases: 674,
+    reportedCases: 562,
     population: 6622705,
     totalHospitalBeds: 1380614
   };
