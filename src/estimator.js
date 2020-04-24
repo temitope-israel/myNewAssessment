@@ -35,7 +35,7 @@ const covid19ImpactEstimator = (data) => {
     impact.infectionsByRequestedTime = impact.currentlyInfected * Math.trunc(2 ** (days / 3));
     severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected
     * Math.trunc(2 ** (days / 3));
-  } else if (data.periodType === 'weeks') {
+  } else if (data.periodType === 'days') {
     //  For  Projected Months
     impact.infectionsByRequestedTime = impact.currentlyInfected
     * Math.trunc((2 ** (days / 3)) * weeks);
