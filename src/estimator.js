@@ -13,7 +13,7 @@ const covid19ImpactEstimator = (data) => {
   };
   //  Estimation of Reported Cases
   reportedCases = data.reportedCases;
-  
+
 
   // IMPACT ESTIMATIONS
   currentlyInfected = reportedCases * 10;
@@ -37,18 +37,20 @@ const covid19ImpactEstimator = (data) => {
     * Math.trunc(2 ** (days / 3));
   } else if (data.periodType === 'weeks') {
     //  For  Projected Months
-    impact.infectionsByRequestedTime = impact.currentlyInfected * Math.trunc(2 ** (days / 3) / weeks);
+    impact.infectionsByRequestedTime = impact.currentlyInfected
+    * Math.trunc(2 ** (days / 3) / weeks);
     severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected
     * Math.trunc(2 ** (days / 3) / weeks);
   } else {
     // For Current Projection
-    impact.infectionsByRequestedTime = impact.currentlyInfected * Math.trunc(2 ** (days / 3) / months);
+    impact.infectionsByRequestedTime = impact.currentlyInfected
+    * Math.trunc(2 ** (days / 3) / months);
     severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected
     * Math.trunc(2 ** (days / 3) / months);
   }
 
   return {
-    data : {
+    data: {
       region: {
         name: 'Africa',
         avgAge: 19.7,
