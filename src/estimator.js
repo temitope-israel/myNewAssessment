@@ -26,7 +26,7 @@ const covid19ImpactEstimator = (data) => {
   //  Calculation for Normalisation to Days
   const days = data.timeToElapse; // 58
   const weeks = Math.trunc(data.timeToElapse / 7);
-  const months = Math.trunc(data.timeToElapse / 30);
+  // const months = Math.trunc(data.timeToElapse / 30);
 
   //  return { days, weeks, months };
   // Estimation in Weeks
