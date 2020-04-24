@@ -20,17 +20,17 @@ const covid19ImpactEstimator = (data) => {
     },
     periodType: 'days',
     timeToElapse: 58,
-    reportedCases: 562,
+    reportedCases: 674,
     population: 6622705,
     totalHospitalBeds: 1380614
   };
 
   impact = {
-    currentlyInfected: 20
+    currentlyInfected,
   };
 
   severeImpact = {
-    currentlyInfected: 40
+    currentlyInfected,
   };
   //  Estimation of Reported Cases
   reportedCases = myData.reportedCases;
