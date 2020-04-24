@@ -32,7 +32,7 @@ const covid19ImpactEstimator = (data) => {
   severeImpact = {
     currentlyInfected: 40
   };
-
+  //  Estimation of Reported Cases
   reportedCases = myData.reportedCases;
   currentlyInfected = reportedCases * 10;
   severeCurrentlyInfected = reportedCases * 50;
@@ -40,29 +40,30 @@ const covid19ImpactEstimator = (data) => {
   //  Output Estimate of Currently Infected
   impact.currentlyInfected = currentlyInfected;
   severeImpact.currentlyInfected = severeCurrentlyInfected;
-  //  Calculation for Infections By requested Time
+
+  //  Calculation for Normalisation to Days
   const days = myData.timeToElapse;
   const weeks = Math.trunc(myData.timeToElapse * 7);
   const months = Math.trunc(myData.timeToElapse * 30);
 
   if (myData.periodType === 'weeks') {
-    weeksInfectionsByTime = Math.trunc(myData.timeToElapse * 7);
+    weeksInfectionsByTime = weeks;
   } else if (myData.periodType === 'months') {
-    monthsInfectionsByTime = Math.trunc(myData.timeToElapse * 30);
+    monthsInfectionsByTime = months;
   } else {
     daysInfectionsByTime = days;
-  }
+  }  //  Ends Here...
 
   //  return { days, weeks, months };
-  // Estimation in Days
+  // Estimation in Weeks
   if (myData.periodType === 'weeks') {
     // For Current Week & Projected Week
-    impact.currentlyInfected *= weeksInfectionsByTime;
-    impact.currentlyInfected = impact.infectionsByRequestedTime;
+    currentlyInfected *= weeksInfectionsByTime;
+    impact.infectionsByRequestedTime = currentlyInfected;
 
-    severeImpact.currentlyInfected *= Math.trunc((2 ** 19) / weeks);
-    severeImpact.currentlyInfected = severeImpact.infectionsByRequestedTime;
-  } else if (myData.periodType === 'months') {
+    severeCurrentlyInfected *= Math.trunc((2 ** 19) / weeks);
+    severeImpact.infectionsByRequestedTime = severeCurrentlyInfected;
+  } /*else if (myData.periodType === 'months') {
     //  For Current Month & Projected Months
     impact.currentlyInfected *= monthsInfectionsByTime;
     impact.currentlyInfected = impact.infectionsByRequestedTime;
@@ -77,7 +78,7 @@ const covid19ImpactEstimator = (data) => {
     //  For Projected Days
     severeImpact.currentlyInfected *= Math.trunc(2 ** 19);
     severeImpact.currentlyInfected = severeImpact.infectionsByRequestedTime;
-  }
+  }*/
 
   return {
     data,
