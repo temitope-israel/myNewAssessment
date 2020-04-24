@@ -1,27 +1,9 @@
 let reportedCases;
 let currentlyInfected;
 let severeCurrentlyInfected;
-let myData;
 let impact;
 let severeImpact;
 const covid19ImpactEstimator = (data) => {
-  myData = data;
-
-  //  Input data
-  myData = {
-    region: {
-      name: 'Africa',
-      avgAge: 19.7,
-      avgDailyIncomeInUSD: 5,
-      avgDailyIncomePopulation: 0.71
-    },
-    periodType: 'days',
-    timeToElapse: 58,
-    reportedCases: 674,
-    population: 6622705,
-    totalHospitalBeds: 1380614
-  };
-
   impact = {
     currentlyInfected
   };
@@ -30,39 +12,55 @@ const covid19ImpactEstimator = (data) => {
     currentlyInfected
   };
   //  Estimation of Reported Cases
-  reportedCases = myData.reportedCases;
-  currentlyInfected = reportedCases * 10;
-  severeCurrentlyInfected = reportedCases * 50;
+  reportedCases = data.reportedCases;
+  
 
-  //  Output Estimate of Currently Infected
+  // IMPACT ESTIMATIONS
+  currentlyInfected = reportedCases * 10;
   impact.currentlyInfected = currentlyInfected;
+
+  // SEVERE IMPACT ESTIMATION
+  severeCurrentlyInfected = reportedCases * 50;
   severeImpact.currentlyInfected = severeCurrentlyInfected;
 
   //  Calculation for Normalisation to Days
-  const days = myData.timeToElapse; // 58
-  /* const weeks = Math.trunc(myData.timeToElapse * 7);
-  const months = Math.trunc(myData.timeToElapse * 30); */
+  const days = data.timeToElapse; // 58
+  const weeks = Math.trunc(data.timeToElapse / 7);
+  const months = Math.trunc(data.timeToElapse / 30);
 
   //  return { days, weeks, months };
   // Estimation in Weeks
-  if (myData.periodType === 'days') {
-    // For Current Day
-    impact.currentlyInfected *= 3;
+  if (data.periodType === 'days') {
+    // For Projected Days
     impact.infectionsByRequestedTime = impact.currentlyInfected * Math.trunc(2 ** (days / 3));
-
-    severeImpact.currentlyInfected *= 3;
     severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected
     * Math.trunc(2 ** (days / 3));
-  }/* else if (myData.periodType === 'weeks') {
-    //  For Current Month & Projected Months
-
+  } else if (data.periodType === 'weeks') {
+    //  For  Projected Months
+    impact.infectionsByRequestedTime = impact.currentlyInfected * Math.trunc(2 ** (days / 3) / weeks);
+    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected
+    * Math.trunc(2 ** (days / 3) / weeks);
   } else {
     // For Current Projection
-
-  } */
+    impact.infectionsByRequestedTime = impact.currentlyInfected * Math.trunc(2 ** (days / 3) / months);
+    severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected
+    * Math.trunc(2 ** (days / 3) / months);
+  }
 
   return {
-    data,
+    data : {
+      region: {
+        name: 'Africa',
+        avgAge: 19.7,
+        avgDailyIncomeInUSD: 5,
+        avgDailyIncomePopulation: 0.71
+      },
+      periodType: 'days',
+      timeToElapse: 58,
+      reportedCases: 674,
+      population: 6622705,
+      totalHospitalBeds: 1380614
+    },
     impact,
     severeImpact
   };
