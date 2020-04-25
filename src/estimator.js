@@ -25,12 +25,12 @@ const covid19ImpactEstimator = (data) => {
 
   let infectionTime;
   //  Calculation for Normalisation to Days
-  if (data.periodType === 'days') {
-    infectionTime = Math.trunc(data.timeToElapse);
+  if (data.periodType === 'months') {
+    infectionTime = Math.trunc(data.timeToElapse) * 30;
   } else if (data.periodType === 'weeks') {
     infectionTime = Math.trunc(data.timeToElapse) * 7;
   } else {
-    infectionTime = Math.trunc(data.timeToElapse) * 30;
+    infectionTime = Math.trunc(data.timeToElapse);
   }
 
   // For Projected Days
