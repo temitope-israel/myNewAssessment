@@ -32,8 +32,6 @@ const covid19ImpactEstimator = (data) => {
   } else {
     infectionTime = Math.trunc(data.timeToElapse) * 30;
   }
-  //  return { days, weeks, months };
-  // Estimation in Weeks
 
   // For Projected Days
   impact.infectionsByRequestedTime = Math.trunc(impact.currentlyInfected
