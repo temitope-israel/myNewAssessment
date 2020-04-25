@@ -26,9 +26,9 @@ const covid19ImpactEstimator = (data) => {
   let infectionTime;
   //  Calculation for Normalisation to Days
   if (data.periodType === 'weeks') {
-    infectionTime = Math.trunc(data.timeToElapse * 7);
+    infectionTime = Math.trunc(data.timeToElapse) * 7;
   } else if (data.periodType === 'months') {
-    infectionTime = Math.trunc(data.timeToElapse * 30);
+    infectionTime = Math.trunc(data.timeToElapse) * 30;
   } else {
     infectionTime = data.timeToElapse;
   }
@@ -55,7 +55,7 @@ const covid19ImpactEstimator = (data) => {
   impact.hospitalBedsByRequestedTime = Math.trunc((impact.severeCasesByRequestedTime
     * (2 ** (infectionTime / 3))) - (0.65 * data.totalHospitalBeds));
   severeImpact.hospitalBedsByRequestedTime = Math.trunc((severeImpact.severeCasesByRequestedTime
-    * (2 ** (infectionTime / 3))) * (0.65 * data.totalHospitalBeds));
+    * (2 ** (infectionTime / 3))) - (0.65 * data.totalHospitalBeds));
 
   return {
     data: {
