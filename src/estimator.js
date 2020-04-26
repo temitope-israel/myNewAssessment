@@ -13,7 +13,7 @@ const covid19ImpactEstimator = (data) => {
   };
   //  Estimation of Reported Cases
   reportedCases = data.reportedCases;
-
+E
   // IMPACT ESTIMATIONS
   currentlyInfected = reportedCases * 10;
   impact.currentlyInfected = currentlyInfected;
@@ -71,6 +71,6 @@ const covid19ImpactEstimator = (data) => {
     impact,
     severeImpact
   };
-};//  Function Main Ends Here....
+};
 
 export default covid19ImpactEstimator;
