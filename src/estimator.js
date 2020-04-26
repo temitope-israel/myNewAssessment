@@ -11,6 +11,7 @@ const covid19ImpactEstimator = (data) => {
   severeImpact = {
     currentlyInfected
   };
+
   //  Estimation of Reported Cases
   reportedCases = data.reportedCases;
 
