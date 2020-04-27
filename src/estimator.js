@@ -20,6 +20,7 @@ const covid19ImpactEstimator = (data) => {
   impact.currentlyInfected = currentlyInfected;
 
   // SEVERE IMPACT ESTIMATION
+
   severeCurrentlyInfected = reportedCases * 50;
   severeImpact.currentlyInfected = severeCurrentlyInfected;
 
@@ -34,6 +35,7 @@ const covid19ImpactEstimator = (data) => {
   }
 
   // For Projected Days
+
   impact.infectionsByRequestedTime = Math.trunc(impact.currentlyInfected
   * (2 ** (infectionTime / 3)));
 
