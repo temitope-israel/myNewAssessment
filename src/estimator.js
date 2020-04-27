@@ -28,7 +28,7 @@ const covid19ImpactEstimator = (data) => {
   if (data.periodType === 'months') {
     infectionTime = Math.trunc(data.timeToElapse) * 30;
   } else if (data.periodType === 'weeks') {
-    infectionTime = Math.trunc(data.timeToElapse) / 7;
+    infectionTime = Math.trunc(data.timeToElapse) * 7;
   } else {
     infectionTime = Math.trunc(data.timeToElapse);
   }
